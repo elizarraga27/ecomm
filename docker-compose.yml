@@ -1,0 +1,33 @@
+version: '3.9'
+services:
+  mongo-ecomm:
+    image: mongo
+    container_name: mongo-ecomm
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin 
+      MONGO_INITDB_ROOT_PASSWORD: secret
+    ports:
+      - 27017:27017  
+    volumes:
+      - db-mongo-ecomm:/data/db
+      - type: bind
+        source: $HOST/C:/Users/aleja/Documentos/curso_alura/db-mongo-ecomm
+        target: /mongo-scripts
+
+  ecomm:
+    image: eduardov/ecomm:1.0
+
+
+volumes:
+  db-mongo-ecomm:
+    driver: local
+
+
+
+
+    
+  
+    
+
+    
+    
