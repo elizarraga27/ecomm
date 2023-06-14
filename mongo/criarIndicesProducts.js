@@ -1,4 +1,4 @@
-se('ecomm');
+Use('ecomm');
 
 const nome = db.products.createIndex({ nome: 1 });
 const preco = db.products.createIndex({ preco: 1 });
