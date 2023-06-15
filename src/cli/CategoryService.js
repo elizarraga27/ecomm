@@ -13,10 +13,7 @@ class CategoryService{
 
       try{
         const status = await fetch(`http://localhost:3000/categories`)
-        const res = await fetch(`http://localhost:3000/categories`)
-            .then(data => {
-            return data.json();
-             })
+        const res = await status.json()
         console.log(`response status: ${status.status}`, res)
         }catch(erro){
             manejaErro(erro);
@@ -26,10 +23,8 @@ class CategoryService{
     static async findCategoryById(id){
         try{
             const status = await fetch(`http://localhost:3000/categories/${id}`)
-            const res = await fetch(`http://localhost:3000/categories/${id}`)
-                .then(data => {
-                return data.json();
-                 })
+            const res = await status.json()
+                
                     if(status.status === 404){     
                         console.log(`response status: ${status.status}`, chalk.red("id não encontrada, id não existe"))
                     }else{
