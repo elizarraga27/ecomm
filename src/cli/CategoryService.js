@@ -12,14 +12,33 @@ class CategoryService{
     static async findCategories(){
 
       try{
+        const status = await fetch(`http://localhost:3000/categories`)
         const res = await fetch(`http://localhost:3000/categories`)
             .then(data => {
             return data.json();
              })
-        console.log(res)
+        console.log(`response status: ${status.status}`, res)
         }catch(erro){
             manejaErro(erro);
         }
+    }
+
+    static async findCategoryById(id){
+        try{
+            const status = await fetch(`http://localhost:3000/categories/${id}`)
+            const res = await fetch(`http://localhost:3000/categories/${id}`)
+                .then(data => {
+                return data.json();
+                 })
+                    if(status.status === 404){     
+                        console.log(`response status: ${status.status}`, chalk.red("id não encontrada, id não existe"))
+                    }else{
+                        console.log(`response status: ${status.status}`, res)
+                    }
+            }catch(erro){
+                manejaErro(erro);
+            }
+
     }
 
   }
