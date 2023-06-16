@@ -1,0 +1,58 @@
+openapi: 3.0.3
+info:
+  title: Api LevelUp Alura
+  contact:
+    email: eduardo.alejandro@pagonxt.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.11
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: http://localhost:3000
+
+paths:
+  /categories:
+    get:
+      tags:
+        - Categoria
+      summary: Recuperar todas as categorias
+      responses:
+        200:
+          description: Sucesso!!
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Categoria'  
+        500:
+          description: falha no servidor
+          content:
+            application/json:
+              example: "falha no servidor"
+        404:
+          description: lista não encontrada
+          content:
+            application/json:
+              example: "lista não encontrada"
+
+
+components:
+  schemas:
+    Categoria:
+      type: object
+      properties:
+          id:
+            type: integer
+          nome:
+            type: string
+          status:
+            type: string
+            description: STATUS DE CATEGORIA
+            example: ATIVA
+            enum:
+              - INATIVA
+              - ATIVA
