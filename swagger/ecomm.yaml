@@ -39,6 +39,29 @@ paths:
             application/json:
               example: "lista não encontrada"
 
+    post:
+      tags:
+        - Categoria
+      summary: Cria nova categoria
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Categoria'
+      description: "Através desse endpoint você pode criar novas categorias"
+      responses:
+        201:
+          description: "Sucesso!!"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Categoria'
+        500:
+          description: falha no servidor
+          content:
+            application/json:
+              example: "falha no servidor"
+
   /categories/{id}:  
     parameters:
       - name: id
