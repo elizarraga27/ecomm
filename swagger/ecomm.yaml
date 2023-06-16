@@ -38,7 +38,7 @@ paths:
           content:
             application/json:
               example: "lista não encontrada"
-
+  /admin/categories:
     post:
       tags:
         - Categoria
