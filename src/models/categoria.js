@@ -1,5 +1,10 @@
 import mongoose from 'mongoose';
 
+const validateNome = (nome) => {
+    const re = /^(?!\d)\w{3,}$/;
+    return re.test(nome);
+};
+
 const categoriaSchema = new mongoose.Schema(
     {
         id:{
@@ -7,10 +12,12 @@ const categoriaSchema = new mongoose.Schema(
         },
         nome:{
             type: String,
-            required: true
+            required: [true, 'precisa inserir o nome'],
+            validate: [validateNome, "nome precisar ter mas de 3 letras, não pode começar com numero"]
         },
         status:{
-            type: String
+            type: String,
+            enum: ['ATIVA', 'INATIVA']
         }
     }
 );

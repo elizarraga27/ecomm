@@ -10,6 +10,16 @@ class CategoriaController {
             res.status(500).json({message: erro});
         }
     }
+
+    static cadastrarCategoria = async (req, res) => {
+        let categoria = new categorias(req.body);
+        try{
+            const categoriaNova = await categoria.save()
+            res.status(201).json({categoriaNova: categoriaNova})
+        }catch(erro){
+            res.status(500).json({message: `${erro.message} - falha ao cadastrar categoria`})
+        }
+    }
 }
 
 export default CategoriaController;
