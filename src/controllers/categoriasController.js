@@ -20,6 +20,20 @@ class CategoriaController {
             res.status(500).json({message: `${erro.message} - falha ao cadastrar categoria`})
         }
     }
+
+    static listarCategoriaById = async (req, res) => {
+        const {id} = req.params
+        try{
+            const categoria = await categorias.findById(id)
+            if(categoria){
+                res.status(200).json(categoria)
+            }else{
+                res.status(404).send({message: "Categoria não encontrada"})
+            }
+        }catch(erro){
+            res.status(500).send({message: erro.message});
+        }
+    }
 }
 
 export default CategoriaController;
