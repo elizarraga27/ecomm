@@ -6,11 +6,20 @@
     "type": "module",
     "scripts": {
         "start": "node src/main.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "dev": "nodemon server.js",
+        "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+        "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch"
     },
     "author": "",
     "license": "MIT",
     "dependencies": {
-        "chalk": "5.0.1"
+        "chalk": "5.0.1",
+        "express": "^4.18.2",
+        "mongoose": "^7.3.0",
+        "nodemon": "^2.0.22"
+    },
+    "devDependencies": {
+        "jest": "28.1.0",
+        "supertest": "^6.3.3"
     }
 }
